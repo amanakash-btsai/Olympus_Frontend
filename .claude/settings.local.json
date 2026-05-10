@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python \"C:\\\\Users\\\\Aman Akash\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\skills-plugin\\\\c34bdac2-b12f-4ad1-b67d-7cb1b829a180\\\\8086e060-531c-4a77-a01a-80822fdc3563\\\\skills\\\\docx\\\\scripts\\\\office\\\\unpack.py\" EQC_Frontend_Folder_Structure.docx unpacked_structure/)",
+      "Bash(python -c ' *)"
+    ]
+  }
+}
