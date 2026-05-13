@@ -1,16 +1,47 @@
+# Dependencies
 node_modules/
+
+# Build output
 dist/
+
+# Environment variables — never commit real values
 .env
 .env.local
 .env.*.local
+
+# Claude AI and docs
+.claude/
+docs/
+
+# Test coverage
 coverage/
+
+# Logs
 *.log
 logs/
-.DS_Store
-Thumbs.db
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories
 .vscode/
 .idea/
 *.swp
 *.swo
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS generated files
+.DS_Store
+Thumbs.db
 *.tmp
 *.temp
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Vitest snapshot artifacts
+**/__snapshots__/

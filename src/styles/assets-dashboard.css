@@ -1,0 +1,181 @@
+/* ── ASSETS DASHBOARD (LIST VIEW) ── */
+
+.assets-view {
+  background: #fff;
+  min-height: calc(100vh - 106px);
+}
+
+/* Asset list header toolbar */
+.assets-toolbar {
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e8e8e8;
+  background: #fff;
+}
+.assets-toolbar-left  { display: flex; align-items: center; gap: 10px; }
+.assets-toolbar-right { display: flex; align-items: center; gap: 6px; }
+
+.asset-icon {
+  width: 34px; height: 34px;
+  background: #0070d2;
+  border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.assets-title {
+  font-weight: 700; color: #16325c; font-size: 14px;
+}
+
+.count-badge {
+  background: #e0e5ee;
+  border-radius: 10px;
+  padding: 1px 7px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #3e3e3c;
+}
+
+/* Filter bar */
+.assets-filter-bar {
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e0e0e0;
+  background: #fff;
+}
+.assets-filter-bar-left  { font-size: 12px; color: #706e6b; }
+.assets-filter-bar-right { display: flex; align-items: center; gap: 6px; }
+
+.assets-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.assets-search-wrap i {
+  position: absolute;
+  left: 8px;
+  color: #aaa;
+  font-size: 11px;
+}
+.assets-search-input {
+  border: 1px solid #dddbda;
+  border-radius: 3px;
+  padding: 4px 8px 4px 26px;
+  font-size: 12px;
+  outline: none;
+  width: 170px;
+  font-family: 'Inter', inherit;
+}
+.assets-search-input:focus { border-color: #0070d2; }
+
+.view-toggle {
+  display: flex;
+  border: 1px solid #dddbda;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.view-btn {
+  padding: 4px 8px;
+  background: white;
+  color: #706e6b;
+  cursor: pointer;
+  border-right: 1px solid #dddbda;
+  font-size: 11px;
+  border: none;
+}
+.view-btn:last-child { border-right: none; }
+.view-btn.active { background: #f4f5f7; color: #16325c; }
+
+/* Shared small buttons */
+.btn-sm {
+  border: 1px solid #dddbda;
+  background: white;
+  border-radius: 3px;
+  padding: 3px 9px;
+  font-size: 11px;
+  cursor: pointer;
+  color: #3e3e3c;
+  line-height: 1.4;
+  font-family: 'Inter', inherit;
+}
+.btn-sm:hover   { background: #f4f5f7; }
+.btn-sm:disabled { opacity: .4; cursor: default; }
+
+.btn-new {
+  background: #0070d2;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 4px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: 'Inter', inherit;
+}
+.btn-new:hover { background: #005fb2; }
+
+/* Table */
+.assets-table-wrap {
+  overflow-x: auto;
+  padding: 0 16px;
+}
+
+.assets-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.tbl-head { background: #f4f5f7; border-top: 1px solid #dddbda; border-bottom: 1px solid #dddbda; }
+.tbl-head th {
+  padding: 6px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #3e3e3c;
+  white-space: nowrap;
+  text-align: left;
+}
+.sort-icon { color: #aaa; font-size: 9px; margin-left: 3px; }
+
+.tbl-body tr:nth-child(odd)  { background: #fff; }
+.tbl-body tr:nth-child(even) { background: #fafbfc; }
+.tbl-body tr.pin-row  { background: #eaf3fb; }
+.tbl-body tr:hover    { background: #e8f4fd; }
+.tbl-body td {
+  padding: 6px 8px;
+  font-size: 12px;
+  color: #3e3e3c;
+  border-bottom: 1px solid #e8e8e8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+.cell-link {
+  color: #0070d2;
+  cursor: pointer;
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-size: 12px;
+  font-family: inherit;
+  padding: 0;
+}
+.cell-link:hover { text-decoration: underline; }
+
+/* Pagination */
+.assets-pagination {
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #e0e0e0;
+  background: #fff;
+}
+.assets-pagination-info { font-size: 12px; color: #706e6b; }
+.assets-pagination-nav  { display: flex; align-items: center; gap: 4px; }
+.assets-pagination-label { font-size: 12px; color: #3e3e3c; padding: 0 8px; }

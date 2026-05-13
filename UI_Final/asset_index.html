@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assets – Olympus</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --c-primary:      #1e40af;
+      --c-primary-dark: #1e3a8a;
+      --c-primary-mid:  #2563eb;
+      --c-primary-lt:   #dbeafe;
+      --c-accent:       #f59e0b;
+      --c-bg:           #f1f5f9;
+      --c-surface:      #ffffff;
+      --c-border:       #e2e8f0;
+      --c-border-mid:   #cbd5e1;
+      --c-text:         #0f172a;
+      --c-text-2:       #475569;
+      --c-text-3:       #94a3b8;
+      --c-danger:       #dc2626;
+      --r:              6px;
+      --r-sm:           4px;
+      --sh-sm:          0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.05);
+      --sh:             0 4px 6px -1px rgba(0,0,0,.08),0 2px 4px -1px rgba(0,0,0,.05);
+      --sh-md:          0 10px 15px -3px rgba(0,0,0,.08),0 4px 6px -2px rgba(0,0,0,.04);
+    }
+    *{box-sizing:border-box;}
+    body{font-family:'Inter',Arial,sans-serif;font-size:13px;margin:0;padding:0;background:#f1f5f9;}
+
+    /* ── TOP HEADER ── */
+    .top-header{display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:60px;background:#fff;box-shadow:var(--sh-sm);position:sticky;top:0;z-index:50;}
+    .header-left{display:flex;align-items:center;gap:16px;flex:1;}
+    .header-center{display:flex;align-items:center;justify-content:center;flex:1;}
+    .header-right{display:flex;align-items:center;gap:12px;flex:1;justify-content:flex-end;}
+    .oly-logo{display:flex;flex-direction:column;align-items:flex-start;gap:3px;line-height:1;}
+    .oly-logo-text{font-size:21px;font-weight:800;color:var(--c-primary-dark);letter-spacing:3px;font-style:italic;}
+    .oly-logo-bar{height:3px;width:100%;background:var(--c-accent);border-radius:2px;}
+    .oly-subtitle{font-size:13px;color:var(--c-text-2);font-weight:500;border-left:2px solid var(--c-border-mid);padding-left:14px;white-space:nowrap;}
+    .header-search-pill{display:flex;align-items:center;gap:8px;cursor:pointer;border:1.5px solid var(--c-border);border-radius:24px;padding:7px 18px;background:var(--c-bg);min-width:220px;transition:border-color .15s,box-shadow .15s;}
+    .header-search-pill:hover{border-color:var(--c-primary-mid);box-shadow:0 0 0 3px rgba(37,99,235,.1);}
+    .header-search-pill svg{width:15px;height:15px;stroke:var(--c-text-3);fill:none;stroke-width:2;}
+    .header-search-pill span{font-size:13px;color:var(--c-text-3);}
+    .lang-dropdown select{background:var(--c-surface);border:1.5px solid var(--c-border);color:var(--c-primary);border-radius:20px;padding:6px 12px;font-size:13px;font-weight:500;font-family:inherit;cursor:pointer;outline:none;transition:border-color .15s,box-shadow .15s,background .15s;}
+    .lang-dropdown select:hover{border-color:var(--c-primary-mid);background:var(--c-primary-lt);}
+    .globe-btn{background:none;border:none;cursor:pointer;padding:6px;display:flex;align-items:center;border-radius:var(--r-sm);transition:background .15s;}
+    .globe-btn:hover{background:var(--c-bg);}
+    .globe-btn svg{width:18px;height:18px;stroke:var(--c-text-2);fill:none;stroke-width:1.5;}
+    .auth-dropdown{position:relative;}
+    .auth-btn{background:none;border:1.5px solid var(--c-border);border-radius:24px;padding:6px 14px 6px 10px;cursor:pointer;display:flex;align-items:center;gap:7px;font-size:13px;color:var(--c-text);font-weight:500;font-family:inherit;transition:background .15s,border-color .15s,box-shadow .15s;}
+    .auth-btn:hover{background:var(--c-bg);border-color:var(--c-primary-mid);box-shadow:0 0 0 3px rgba(37,99,235,.1);}
+    .auth-btn .person-icon{width:17px;height:17px;stroke:var(--c-text-2);fill:none;stroke-width:1.8;}
+    .auth-btn .chevron-icon{width:11px;height:11px;stroke:var(--c-text-3);fill:none;stroke-width:2;transition:transform .2s;}
+    .auth-dropdown.open .chevron-icon{transform:rotate(180deg);}
+    .auth-menu{display:none;position:absolute;top:calc(100% + 8px);right:0;background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--r);box-shadow:var(--sh-md);min-width:160px;z-index:100;overflow:hidden;}
+    .auth-dropdown.open .auth-menu{display:block;}
+    .auth-menu a{display:block;padding:10px 16px;font-size:13px;color:var(--c-text);text-decoration:none;font-weight:500;transition:background .12s;}
+    .auth-menu a:hover{background:var(--c-bg);}
+    .auth-menu hr{border:none;border-top:1px solid var(--c-border);margin:2px 0;}
+    .auth-menu a.signout{color:var(--c-danger);}
+
+    /* ── MAIN NAV BAR ── */
+    .main-nav{background:linear-gradient(135deg,var(--c-primary-dark) 0%,var(--c-primary) 100%);display:flex;align-items:stretch;padding:0 20px;height:46px;gap:0;border-bottom:1px solid rgba(0,0,0,.15);overflow-x:auto;}
+    .main-nav::-webkit-scrollbar{height:3px;}
+    .main-nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.3);border-radius:2px;}
+    .nav-brand{display:flex;align-items:center;gap:10px;padding-right:16px;border-right:1px solid rgba(255,255,255,.15);margin-right:4px;flex-shrink:0;}
+    .oly-logo-text2{font-size:16px;font-weight:800;color:#fff;letter-spacing:3px;font-style:italic;}
+    .oly-subtitle2{font-size:11px;color:rgba(255,255,255,.65);border-left:1.5px solid rgba(255,255,255,.25);padding-left:12px;white-space:nowrap;font-weight:600;letter-spacing:.8px;text-transform:uppercase;}
+    .oly-dropdown select{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:var(--r-sm);padding:3px 6px;font-size:11px;font-family:inherit;cursor:pointer;outline:none;margin-left:8px;min-width:132px;}
+    .oly-dropdown select option{background:var(--c-primary-dark);color:#fff;}
+    .oly-dropdown select:focus{border-color:rgba(255,255,255,.5);}
+
+    /* NAV TABS */
+    .nav-tabs{display:flex;align-items:stretch;flex:1;overflow-x:auto;gap:0;}
+    .nav-tabs::-webkit-scrollbar{display:none;}
+    .nav-tab-item{display:flex;align-items:center;gap:6px;padding:0 16px;font-size:12px;color:rgba(255,255,255,.75);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:background .15s,color .15s;position:relative;flex-shrink:0;}
+    .nav-tab-item:hover{color:#fff;background:rgba(255,255,255,.08);}
+    .nav-tab-item.active{color:#fff;border-bottom-color:#00a1e0;background:rgba(255,255,255,.1);}
+    .nav-tab-item.active .tab-label{font-weight:600;}
+    .tab-close{display:flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,.6);font-size:11px;padding:0;line-height:1;transition:background .12s,color .12s;}
+    .tab-close:hover{background:rgba(255,255,255,.25);color:#fff;}
+
+    /* ── DASHBOARD CONTENT ── */
+    #view-dashboard{background:#fff;min-height:calc(100vh - 106px);}
+    .tbl-head{background:#f4f5f7;border-top:1px solid #dddbda;border-bottom:1px solid #dddbda;}
+    .tbl-head th{padding:6px 8px;font-size:11px;font-weight:700;color:#3e3e3c;white-space:nowrap;text-align:left;}
+    .tbl-body tr:nth-child(odd){background:#fff;}
+    .tbl-body tr:nth-child(even){background:#fafbfc;}
+    .tbl-body tr.pin-row{background:#eaf3fb;}
+    .tbl-body tr:hover{background:#e8f4fd;}
+    .tbl-body td{padding:6px 8px;font-size:12px;color:#3e3e3c;border-bottom:1px solid #e8e8e8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px;}
+    .cell-link{color:#0070d2;cursor:pointer;text-decoration:none;}
+    .cell-link:hover{text-decoration:underline;}
+    .btn-sm{border:1px solid #dddbda;background:white;border-radius:3px;padding:3px 9px;font-size:11px;cursor:pointer;color:#3e3e3c;line-height:1.4;}
+    .btn-sm:hover{background:#f4f5f7;}
+    .btn-new{background:#0070d2;color:white;border:none;border-radius:3px;padding:4px 14px;font-size:12px;cursor:pointer;}
+    .btn-new:hover{background:#005fb2;}
+    .asset-icon{width:34px;height:34px;background:#0070d2;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .view-toggle{display:flex;border:1px solid #dddbda;border-radius:3px;overflow:hidden;}
+    .view-btn{padding:4px 8px;background:white;color:#706e6b;cursor:pointer;border-right:1px solid #dddbda;font-size:11px;}
+    .view-btn:last-child{border-right:none;}
+    .view-btn.active{background:#f4f5f7;color:#16325c;}
+    .count-badge{background:#e0e5ee;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:600;color:#3e3e3c;}
+    .sort-icon{color:#aaa;font-size:9px;margin-left:3px;}
+
+    /* ── ASSET DETAIL PAGE ── */
+    .asset-detail{min-height:calc(100vh - 106px);display:none;}
+    .asset-detail.active{display:block;}
+
+    /* Detail header */
+    .detail-header{background:linear-gradient(135deg,#1b3a6b 0%,#1e4d8c 100%);padding:10px 20px 0 20px;color:#fff;}
+    .detail-header-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;}
+    .detail-title-row{display:flex;align-items:center;gap:10px;}
+    .detail-icon{width:32px;height:32px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .detail-breadcrumb{font-size:11px;color:rgba(255,255,255,.6);margin-bottom:2px;}
+    .detail-name{font-size:15px;font-weight:700;color:#fff;letter-spacing:.3px;}
+    .detail-actions{display:flex;align-items:center;gap:8px;}
+    .det-btn{border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.1);color:#fff;border-radius:3px;padding:5px 14px;font-size:12px;cursor:pointer;font-family:inherit;transition:background .15s;}
+    .det-btn:hover{background:rgba(255,255,255,.2);}
+    .det-btn.primary{background:#0070d2;border-color:#0070d2;}
+    .det-btn.primary:hover{background:#005fb2;}
+    .detail-summary{display:flex;align-items:center;gap:32px;padding:8px 0 12px 0;flex-wrap:wrap;}
+    .summary-field{display:flex;flex-direction:column;gap:2px;}
+    .summary-label{font-size:10px;color:rgba(255,255,255,.6);font-weight:500;text-transform:uppercase;letter-spacing:.5px;}
+    .summary-val{font-size:12px;color:#fff;font-weight:500;}
+    .summary-val a{color:#79c0ff;text-decoration:none;}
+    .summary-val a:hover{text-decoration:underline;}
+
+    /* Quick links bar */
+    .quick-links-bar{background:#fff;border-bottom:2px solid #e8e8e8;padding:10px 20px;}
+    .quick-links-label{font-size:11px;font-weight:700;color:#3e3e3c;margin-bottom:8px;display:flex;align-items:center;gap:4px;}
+    .quick-links-grid{display:flex;flex-wrap:wrap;gap:8px 24px;}
+    .quick-link{display:flex;align-items:center;gap:5px;font-size:12px;color:#3e3e3c;cursor:pointer;white-space:nowrap;}
+    .quick-link:hover .ql-label{text-decoration:underline;color:#0070d2;}
+    .ql-icon{width:16px;height:16px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;flex-shrink:0;}
+    .ql-label{color:#0070d2;font-size:11px;}
+    .ql-count{font-size:11px;color:#706e6b;}
+
+    /* Two-pane layout */
+    .detail-body{display:flex;min-height:calc(100vh - 260px);}
+    .detail-left{flex:0 0 63%;overflow-y:auto;background:#fff;border-right:1px solid #e8e8e8;}
+    .detail-right{flex:0 0 37%;background:#dce8f5;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23a8c4e0' fill-opacity='0.25'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");overflow-y:auto;}
+
+    /* Sub-tabs */
+    .sub-tabs{display:flex;border-bottom:2px solid #e8e8e8;padding:0 16px;background:#fff;}
+    .sub-tab{padding:10px 16px;font-size:13px;color:#706e6b;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;font-weight:500;}
+    .sub-tab:hover{color:#16325c;}
+    .sub-tab.active{color:#0070d2;border-bottom-color:#0070d2;font-weight:600;}
+
+    /* Field groups in detail */
+    .detail-fields{padding:12px 16px;}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+    .field-cell{padding:8px 12px 8px 0;border-bottom:1px solid #f0f0f0;position:relative;}
+    .field-cell:nth-child(odd){border-right:1px solid #f0f0f0;padding-right:24px;}
+    .field-cell:nth-child(even){padding-left:16px;}
+    .field-label{font-size:11px;color:#706e6b;margin-bottom:2px;display:flex;align-items:center;gap:3px;}
+    .field-val{font-size:12px;color:#3e3e3c;font-weight:500;min-height:18px;}
+    .field-val a{color:#0070d2;text-decoration:none;}
+    .field-val a:hover{text-decoration:underline;}
+    .field-edit{position:absolute;right:4px;top:10px;color:#b0b0b0;font-size:11px;cursor:pointer;opacity:0;transition:opacity .15s;}
+    .field-cell:hover .field-edit{opacity:1;}
+    .field-info{color:#b0b0b0;font-size:10px;cursor:help;}
+    .cb-icon{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border:1.5px dashed #b0b0b0;border-radius:2px;color:transparent;}
+    .cb-icon.checked{border-color:#2e7d32;color:#2e7d32;border-style:solid;}
+
+    /* Section headers */
+    .section-hdr{display:flex;align-items:center;gap:8px;padding:8px 16px;background:#f4f5f7;border-top:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;cursor:pointer;user-select:none;}
+    .section-hdr:hover{background:#eaeaea;}
+    .section-chevron{color:#706e6b;font-size:11px;transition:transform .2s;}
+    .section-chevron.collapsed{transform:rotate(-90deg);}
+    .section-title{font-size:12px;font-weight:700;color:#3e3e3c;}
+    .section-body{overflow:hidden;}
+    .section-body.collapsed{display:none;}
+
+    /* Right panel */
+    .right-panel{padding:0;}
+    .right-sub-tabs{display:flex;border-bottom:1px solid #c0cfe0;padding:0 16px;background:rgba(255,255,255,.6);}
+    .right-sub-tab{padding:10px 14px;font-size:12px;color:#555;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;font-weight:500;}
+    .right-sub-tab.active{color:#0070d2;border-bottom-color:#0070d2;font-weight:600;}
+    .activity-section{margin:12px 16px;background:rgba(255,255,255,.8);border-radius:5px;border:1px solid #c8d8ea;overflow:hidden;}
+    .activity-section-hdr{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:rgba(255,255,255,.95);border-bottom:1px solid #dce8f5;font-size:12px;font-weight:600;color:#3e3e3c;cursor:pointer;}
+    .activity-empty{padding:20px;text-align:center;font-size:12px;color:#706e6b;line-height:1.6;}
+    .activity-top-links{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;font-size:11px;color:#706e6b;}
+    .activity-top-links a{color:#0070d2;text-decoration:none;cursor:pointer;}
+    .activity-top-links a:hover{text-decoration:underline;}
+    .activity-filters{font-size:11px;color:#706e6b;padding:6px 16px;border-bottom:1px solid rgba(0,0,0,.08);display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+    .activity-filter-link{color:#0070d2;cursor:pointer;}
+    .activity-gear{background:none;border:1px solid #c8d8ea;border-radius:3px;padding:2px 5px;cursor:pointer;font-size:11px;color:#706e6b;}
+  </style>
+</head>
+<body>
+
+<!-- ══ TOP HEADER ══ -->
+<div class="top-header">
+  <div class="header-left">
+    <div class="oly-logo">
+      <span class="oly-logo-text">OLYMPUS</span>
+      <div class="oly-logo-bar"></div>
+    </div>
+    <span class="oly-subtitle">Olympus Global Homepage</span>
+  </div>
+  <div class="header-center">
+    <div class="header-search-pill">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span>Search</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="lang-dropdown">
+      <select id="language-select">
+        <option value="en">English</option>
+        <option value="th">ไทย (Thai)</option>
+      </select>
+    </div>
+    <button class="globe-btn" aria-label="Select language">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4" ry="10"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/><path d="M4.93 4.93C6.58 6.58 9.17 7.5 12 7.5s5.42-.92 7.07-2.57"/><path d="M4.93 19.07C6.58 17.42 9.17 16.5 12 16.5s5.42.92 7.07 2.57"/></svg>
+    </button>
+    <div class="auth-dropdown" id="authDropdown">
+      <button class="auth-btn" id="authBtn" aria-haspopup="true" aria-expanded="false">
+        <svg class="person-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
+        Account
+        <svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="auth-menu" role="menu">
+        <a href="#" role="menuitem">Login</a>
+        <a href="#" role="menuitem">My Profile</a>
+        <hr />
+        <a href="#" role="menuitem" class="signout">Sign Out</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MAIN NAV BAR WITH TABS ══ -->
+<div class="main-nav" id="mainNav">
+  <div class="nav-brand">
+    <div class="oly-logo-text2">ASSETS</div>
+    <div class="oly-subtitle2">Dashboard</div>
+    <div class="oly-dropdown">
+      <select id="dashboard-select" onchange="onDashboardChange(this)">
+        <option value="Sales Field">Sales Field</option>
+        <option value="Demo Tracker">Demo Tracker</option>
+        <option value="Loaner Tracker">Loaner Tracker</option>
+        <option value="Assets" selected>Assets</option>
+      </select>
+    </div>
+  </div>
+  <div class="nav-tabs" id="navTabs">
+    <!-- Dashboard + asset tabs injected dynamically -->
+  </div>
+</div>
+
+<!-- ══════════════════════════ DASHBOARD VIEW ══════════════════════════ -->
+<div id="view-dashboard">
+
+  <!-- Asset Header -->
+  <div style="padding:8px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e8e8e8;background:#fff;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="asset-icon"><i class="fas fa-box-open" style="color:white;font-size:14px;"></i></div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-weight:700;color:#16325c;font-size:14px;">Recently Viewed</span>
+        <span class="count-badge">12</span>
+        <i class="fas fa-chevron-down" style="color:#706e6b;font-size:11px;cursor:pointer;"></i>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <button class="btn-sm"><i class="fas fa-chevron-left" style="font-size:10px;"></i></button>
+      <button class="btn-sm"><i class="fas fa-chevron-right" style="font-size:10px;"></i></button>
+      <button class="btn-new">New</button>
+    </div>
+  </div>
+
+  <!-- Filter Bar -->
+  <div style="padding:6px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e0e0e0;background:#fff;">
+    <div style="font-size:12px;color:#706e6b;">50+ items</div>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <div style="position:relative;display:flex;align-items:center;">
+        <i class="fas fa-search" style="position:absolute;left:8px;color:#aaa;font-size:11px;"></i>
+        <input type="text" placeholder="Search this list..." style="border:1px solid #dddbda;border-radius:3px;padding:4px 8px 4px 26px;font-size:12px;outline:none;width:170px;" />
+      </div>
+      <div class="view-toggle">
+        <div class="view-btn active"><i class="fas fa-list"></i></div>
+        <div class="view-btn"><i class="fas fa-th"></i></div>
+        <div class="view-btn"><i class="fas fa-chart-bar"></i></div>
+      </div>
+      <button class="btn-sm"><i class="fas fa-filter" style="font-size:10px;margin-right:4px;"></i>Filters</button>
+      <button class="btn-sm"><i class="fas fa-columns" style="font-size:10px;"></i></button>
+      <button class="btn-sm"><i class="fas fa-ellipsis-h" style="font-size:10px;"></i></button>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div style="overflow-x:auto;padding:0 16px;">
+    <table style="width:100%;border-collapse:collapse;min-width:900px;">
+      <thead class="tbl-head">
+        <tr>
+          <th style="width:36px;text-align:center;">#</th>
+          <th style="min-width:200px;">Asset Name <i class="fas fa-sort sort-icon"></i></th>
+          <th style="min-width:110px;">Serial Number <i class="fas fa-sort sort-icon"></i></th>
+          <th style="min-width:160px;">Hospital <i class="fas fa-sort sort-icon"></i></th>
+          <th style="min-width:110px;">Asset Status <i class="fas fa-sort sort-icon"></i></th>
+          <th style="min-width:110px;">Asset Number <i class="fas fa-sort sort-icon"></i></th>
+          <th style="min-width:110px;">Installation Date <i class="fas fa-sort sort-icon"></i></th>
+          <th style="min-width:100px;">Demo/Loaner <i class="fas fa-sort sort-icon"></i></th>
+          <th style="min-width:80px;">Record</th>
+        </tr>
+      </thead>
+      <tbody class="tbl-body" id="assetTableBody">
+        <!-- Rows generated by JS -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div style="padding:8px 16px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #e0e0e0;background:#fff;margin-top:0;">
+    <span style="font-size:12px;color:#706e6b;">Showing 1–12 of 50+ items</span>
+    <div style="display:flex;align-items:center;gap:4px;">
+      <button class="btn-sm" disabled style="opacity:.4;"><i class="fas fa-chevron-left" style="font-size:10px;"></i></button>
+      <span style="font-size:12px;color:#3e3e3c;padding:0 8px;">Page 1</span>
+      <button class="btn-sm" disabled style="opacity:.4;"><i class="fas fa-chevron-right" style="font-size:10px;"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ ASSET DETAIL VIEWS (dynamic) ══════════════════════════ -->
+<div id="assetDetailContainer"></div>
+
+<script>
+function onDashboardChange(select) {
+  openDashboardTab(select.value);
+}
+
+/* ──────────────────────────────────────────────────────────────
+   DATA
+────────────────────────────────────────────────────────────── */
+const ASSETS = [
+  { id:'a1', pin:true,  name:'OLYMUS GI-F190 CLT Monitor',           serial:'S12345',  hospital:'Bumrungrad International',     status:'Available',    statusColor:'#2e7d32', assetNo:'00001234', installDate:'02/15/19', type:'Demo Asset',   product:'GI-F190',        serialNo:'S12345',  installFull:'2019/02/15', contact:'Dr. Somchai', qty:'1.00' },
+  { id:'a2', pin:true,  name:'OLYMPUS Electro Surgical Unit CLT Monitor', serial:'E98765', hospital:'Bumrungrad International', status:'Returned',     statusColor:'#706e6b', assetNo:'',         installDate:'02/15/19', type:'',             product:'ESU-400',        serialNo:'E98765',  installFull:'2019/02/15', contact:'',            qty:'1.00' },
+  { id:'a3', pin:false, name:'MACE 140',                               serial:'A21725',  hospital:'OLYMPUS GTX CLT',             status:'Loaned',       statusColor:'#0070d2', assetNo:'00063681', installDate:'07/11/11', type:'Loaner Asset', product:'MACE-140',       serialNo:'A21725',  installFull:'2011/07/11', contact:'Dr. Araya',   qty:'1.00' },
+  { id:'a4', pin:false, name:'GH-F150 64',                             serial:'B85492',  hospital:'OLYMPUS GTX CLT',             status:'Available',    statusColor:'#2e7d32', assetNo:'00094513', installDate:'07/11/11', type:'Demo Asset',   product:'GH-F150',        serialNo:'B85492',  installFull:'2011/07/11', contact:'',            qty:'1.00' },
+  { id:'a5', pin:false, name:'MACE 140',                               serial:'C33218',  hospital:'OLYMPUS GTX CLT',             status:'Returned',     statusColor:'#706e6b', assetNo:'',         installDate:'07/11/11', type:'',             product:'MACE-140',       serialNo:'C33218',  installFull:'2011/07/11', contact:'',            qty:'1.00' },
+  { id:'a6', pin:false, name:'GP EX II 64',                            serial:'D10483',  hospital:'OLYMPUS GTX CLT',             status:'Overdue',      statusColor:'#dc2626', assetNo:'00083197', installDate:'07/11/11', type:'Loaner Asset', product:'GP-EX-II',       serialNo:'D10483',  installFull:'2011/07/11', contact:'',            qty:'1.00' },
+  { id:'a7', pin:false, name:'GH-F150 64',                             serial:'F20571',  hospital:'OLYMPUS GTX CLT',             status:'Loaned',       statusColor:'#0070d2', assetNo:'00056284', installDate:'07/11/11', type:'Demo Asset',   product:'GH-F150',        serialNo:'F20571',  installFull:'2011/07/11', contact:'',            qty:'1.00' },
+  { id:'a8', pin:false, name:'CF EX II 64',                            serial:'G47392',  hospital:'OLYMPUS GTX CLT',             status:'Waiting list', statusColor:'#d97706', assetNo:'00047261', installDate:'07/11/11', type:'Loaner Asset', product:'CF-EX-II',       serialNo:'G47392',  installFull:'2011/07/11', contact:'',            qty:'1.00' },
+  { id:'a9', pin:false, name:'GF EX II 64',                            serial:'H58417',  hospital:'OLYMPUS GTX CLT',             status:'Available',    statusColor:'#2e7d32', assetNo:'00038952', installDate:'07/11/11', type:'Demo Asset',   product:'GF-EX-II',       serialNo:'H58417',  installFull:'2011/07/11', contact:'',            qty:'1.00' },
+  { id:'a10',pin:false, name:'CF EX II 84',                            serial:'I90234',  hospital:'OLYMPUS GTX CLT',             status:'Returned',     statusColor:'#706e6b', assetNo:'',         installDate:'07/11/11', type:'',             product:'CF-EX-II-84',    serialNo:'I90234',  installFull:'2011/07/11', contact:'',            qty:'1.00' },
+  { id:'a11',pin:false, name:'GF EX II 84',                            serial:'J71845',  hospital:'OLYMPUS GTX CLT',             status:'Overdue',      statusColor:'#dc2626', assetNo:'00018426', installDate:'07/11/11', type:'Loaner Asset', product:'GF-EX-II-84',    serialNo:'J71845',  installFull:'2011/07/11', contact:'',            qty:'1.00' },
+  { id:'a12',pin:false, name:'GF EX 84',                               serial:'K23019',  hospital:'OLYMPUS GTX CLT',             status:'Loaned',       statusColor:'#0070d2', assetNo:'00012837', installDate:'07/11/11', type:'Demo Asset',   product:'GF-EX-84',       serialNo:'K23019',  installFull:'2011/07/11', contact:'',            qty:'1.00' },
+  // Extra for CH-S700-XZ-EA matching reference screenshots
+  { id:'a13',pin:false, name:'CH-S700-XZ-EA',                          serial:'7200524', hospital:'Buddchinarat Hospital',       status:'Returned but need repair', statusColor:'#d97706', assetNo:'20049378', installDate:'2023/08/29', type:'Demo / Loaner', product:'CH-S700-XZ-EA', serialNo:'7200524', installFull:'2023/08/29', contact:'', qty:'1.00' },
+];
+
+const openTabs = {};          // assetId -> asset
+const openDashboardTabs = {}; // tabId -> display name
+let activeView = '';
+
+/* ──────────────────────────────────────────────────────────────
+   RENDER TABLE
+────────────────────────────────────────────────────────────── */
+function renderTable() {
+  const tbody = document.getElementById('assetTableBody');
+  tbody.innerHTML = ASSETS.map((a, i) => `
+    <tr class="${a.pin ? 'pin-row' : ''}">
+      <td style="text-align:center;color:#706e6b;font-size:11px;">${i+1}</td>
+      <td>
+        ${a.pin ? '<i class="fas fa-thumbtack" style="color:#0070d2;font-size:10px;margin-right:4px;"></i>' : ''}
+        <a class="cell-link" onclick="openAssetTab('${a.id}')" href="#">${escHtml(a.name)}</a>
+      </td>
+      <td>${escHtml(a.serial)}</td>
+      <td>${escHtml(a.hospital)}</td>
+      <td><span style="color:${a.statusColor};font-weight:500;">${escHtml(a.status)}</span></td>
+      <td>${escHtml(a.assetNo)}</td>
+      <td>${escHtml(a.installDate)}</td>
+      <td>${escHtml(a.type)}</td>
+      <td><button class="btn-sm" onclick="openAssetTab('${a.id}')">View</button></td>
+    </tr>
+  `).join('');
+}
+
+function escHtml(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+/* ──────────────────────────────────────────────────────────────
+   TAB MANAGEMENT – DASHBOARD TABS (from dropdown)
+────────────────────────────────────────────────────────────── */
+function openDashboardTab(name) {
+  const tabId = 'dash-' + name.toLowerCase().replace(/ /g, '-');
+  if (openDashboardTabs[tabId]) {
+    switchView(tabId);
+    return;
+  }
+  openDashboardTabs[tabId] = name;
+  const navTabs = document.getElementById('navTabs');
+  const tab = document.createElement('div');
+  tab.className = 'nav-tab-item';
+  tab.id = 'nav-tab-' + tabId;
+  tab.dataset.tab = tabId;
+  tab.innerHTML = `
+    <i class="fas fa-th-large" style="font-size:11px;opacity:.8;"></i>
+    <span class="tab-label">${escHtml(name)}</span>
+    <button class="tab-close" title="Close" onclick="closeDashboardTab(event,'${tabId}')">
+      <i class="fas fa-times"></i>
+    </button>
+  `;
+  tab.addEventListener('click', function(e) {
+    if (e.target.closest('.tab-close')) return;
+    switchView(tabId);
+  });
+  // Dashboard tabs always go before asset tabs — insert at position 0
+  navTabs.insertBefore(tab, navTabs.firstChild);
+  switchView(tabId);
+}
+
+function closeDashboardTab(e, tabId) {
+  e.stopPropagation();
+  const tab = document.getElementById('nav-tab-' + tabId);
+  if (tab) tab.remove();
+  delete openDashboardTabs[tabId];
+  if (activeView === tabId) _fallbackView();
+}
+
+/* ── ASSET TABS ── */
+function openAssetTab(assetId) {
+  const asset = ASSETS.find(a => a.id === assetId);
+  if (!asset) return;
+  if (!openTabs[assetId]) {
+    openTabs[assetId] = asset;
+    _addAssetNavTab(asset);
+    buildDetailView(asset);
+  }
+  switchView(assetId);
+  return false;
+}
+
+function _addAssetNavTab(asset) {
+  const navTabs = document.getElementById('navTabs');
+  const tab = document.createElement('div');
+  tab.className = 'nav-tab-item';
+  tab.id = 'nav-tab-' + asset.id;
+  tab.dataset.tab = asset.id;
+  tab.innerHTML = `
+    <i class="fas fa-file-alt" style="font-size:10px;opacity:.8;"></i>
+    <span class="tab-label">${escHtml(asset.name.length > 22 ? asset.name.slice(0,20)+'…' : asset.name)}</span>
+    <button class="tab-close" title="Close" onclick="closeTab(event,'${asset.id}')">
+      <i class="fas fa-times"></i>
+    </button>
+  `;
+  tab.addEventListener('click', function(e) {
+    if (e.target.closest('.tab-close')) return;
+    switchView(asset.id);
+  });
+  navTabs.appendChild(tab);
+}
+
+function closeTab(e, assetId) {
+  e.stopPropagation();
+  const tab = document.getElementById('nav-tab-' + assetId);
+  const view = document.getElementById('view-' + assetId);
+  if (tab) tab.remove();
+  if (view) view.remove();
+  delete openTabs[assetId];
+  if (activeView === assetId) _fallbackView();
+}
+
+function _fallbackView() {
+  // Prefer an open dashboard tab, else the first remaining asset tab
+  const dashIds = Object.keys(openDashboardTabs);
+  if (dashIds.length > 0) { switchView(dashIds[0]); return; }
+  const assetIds = Object.keys(openTabs);
+  if (assetIds.length > 0) { switchView(assetIds[0]); return; }
+  // Nothing open — hide all content
+  activeView = '';
+  document.getElementById('view-dashboard').style.display = 'none';
+  document.querySelectorAll('.asset-detail').forEach(el => el.style.display = 'none');
+}
+
+function switchView(viewId) {
+  activeView = viewId;
+  document.querySelectorAll('.nav-tab-item').forEach(t => {
+    t.classList.toggle('active', t.dataset.tab === viewId);
+  });
+  const isDash = viewId.startsWith('dash-');
+  document.getElementById('view-dashboard').style.display = isDash ? 'block' : 'none';
+  document.querySelectorAll('.asset-detail').forEach(el => {
+    el.style.display = (el.id === 'view-' + viewId) ? 'block' : 'none';
+  });
+}
+
+/* ──────────────────────────────────────────────────────────────
+   BUILD DETAIL VIEW HTML
+────────────────────────────────────────────────────────────── */
+function buildDetailView(asset) {
+  const container = document.getElementById('assetDetailContainer');
+  const div = document.createElement('div');
+  div.className = 'asset-detail';
+  div.id = 'view-' + asset.id;
+  div.style.display = 'none';
+  div.innerHTML = detailHTML(asset);
+  container.appendChild(div);
+}
+
+function detailHTML(a) {
+  const shortName = a.name.length > 28 ? a.name.slice(0,26)+'…' : a.name;
+  return `
+  <!-- ── DETAIL HEADER ── -->
+  <div class="detail-header">
+    <div class="detail-header-top">
+      <div class="detail-title-row">
+        <div class="detail-icon">
+          <i class="fas fa-file-medical-alt" style="color:rgba(255,255,255,.9);font-size:14px;"></i>
+        </div>
+        <div>
+          <div class="detail-breadcrumb">Asset</div>
+          <div class="detail-name">${escHtml(a.name)}</div>
+        </div>
+      </div>
+      <div class="detail-actions">
+        <button class="det-btn"><i class="fas fa-plus" style="font-size:10px;margin-right:4px;"></i>Follow</button>
+        <button class="det-btn primary">Edit</button>
+        <button class="det-btn">Clone</button>
+      </div>
+    </div>
+    <div class="detail-summary">
+      <div class="summary-field">
+        <span class="summary-label">Asset Status</span>
+        <span class="summary-val">${escHtml(a.status)}</span>
+      </div>
+      <div class="summary-field">
+        <span class="summary-label">Hospital</span>
+        <span class="summary-val"><a href="#">${escHtml(a.hospital)}</a></span>
+      </div>
+      <div class="summary-field">
+        <span class="summary-label">Install Date (Commission Date)</span>
+        <span class="summary-val">${escHtml(a.installFull)}</span>
+      </div>
+      <div class="summary-field">
+        <span class="summary-label">Contact</span>
+        <span class="summary-val">${escHtml(a.contact) || '—'}</span>
+      </div>
+      <div class="summary-field">
+        <span class="summary-label">Quantity</span>
+        <span class="summary-val">${escHtml(a.qty)}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── QUICK LINKS ── -->
+  <div class="quick-links-bar">
+    <div class="quick-links-label">
+      Related List Quick Links
+      <i class="fas fa-info-circle field-info"></i>
+    </div>
+    <div class="quick-links-grid">
+      ${quickLink('#2e7d32','fas fa-history','Demo History','0')}
+      ${quickLink('#c0392b','fas fa-tools','Repair','1')}
+      ${quickLink('#e67e22','fas fa-procedures','CIC','0')}
+      ${quickLink('#27ae60','fas fa-exclamation-circle','Product Problem','0')}
+      ${quickLink('#2980b9','fas fa-certificate','QIS','0')}
+      ${quickLink('#8e44ad','fas fa-clipboard-check','PM Record','0')}
+      ${quickLink('#16a085','fas fa-box','PM Product (Asset_input)','')}
+      ${quickLink('#e67e22','fas fa-calendar-check','Annual Inspection','0')}
+      ${quickLink('#2e7d32','fas fa-layer-group','AssetHistory','2')}
+      ${quickLink('#27ae60','fas fa-paperclip','Notes &amp; Attachments','0')}
+      ${quickLink('#2980b9','fas fa-history','Asset History','')}
+      ${quickLink('#8e44ad','fas fa-star','QIS (Customer Asset)','')}
+    </div>
+  </div>
+
+  <!-- ── TWO-PANE BODY ── -->
+  <div class="detail-body">
+
+    <!-- LEFT PANE -->
+    <div class="detail-left">
+      <div class="sub-tabs">
+        <div class="sub-tab active" onclick="switchSubTab(this,'left-details-${a.id}','left-related-${a.id}')">Details</div>
+        <div class="sub-tab" onclick="switchSubTab(this,'left-related-${a.id}','left-details-${a.id}')">Related</div>
+      </div>
+
+      <!-- DETAILS TAB -->
+      <div id="left-details-${a.id}">
+        <div class="detail-fields">
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Description</div>
+              <div class="field-val" style="color:#aaa;font-style:italic;"></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+            <div class="field-cell"></div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Asset Name</div>
+              <div class="field-val">${escHtml(a.name)}</div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+            <div class="field-cell"></div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Nature</div>
+              <div class="field-val">Equipment</div>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">PCL Lost/Cancel Report</div>
+              <div class="field-val"></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BASIC INFORMATION -->
+        ${sectionBlock('basic-'+a.id, 'Basic Information', `
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Status</div>
+              <div class="field-val">In Use</div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">ESAS MODEL + Serial</div>
+              <div class="field-val">:${escHtml(a.serialNo)}</div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Asset Status <i class="fas fa-info-circle field-info"></i></div>
+              <div class="field-val">${escHtml(a.status)}</div>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">■ PM Report Number</div>
+              <div class="field-val"></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Installation Location</div>
+              <div class="field-val">Operation Room</div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">■ 2 times before PM Date</div>
+              <div class="field-val"></div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Strategic Department</div>
+              <div class="field-val">GS</div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">■ Last PM Date</div>
+              <div class="field-val"></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Specific Location</div>
+              <div class="field-val"></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">PM Result</div>
+              <div class="field-val"></div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Customer Internal No <i class="fas fa-info-circle field-info"></i></div>
+              <div class="field-val"></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">PM Comment</div>
+              <div class="field-val"></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Asset Category</div>
+              <div class="field-val">Capital</div>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">Last PM Staff</div>
+              <div class="field-val"></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Competitor Asset</div>
+              <div class="field-val"><span class="cb-icon"></span></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">FSE Owner</div>
+              <div class="field-val">Pongsak Suriya</div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Unknown Serial-No Flag</div>
+              <div class="field-val"><span class="cb-icon"></span></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">Valid / inValid(Dept)</div>
+              <div class="field-val">Valid</div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Checked Location</div>
+              <div class="field-val"><span class="cb-icon checked"><i class="fas fa-check" style="font-size:9px;"></i></span></div>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">Delete Request <i class="fas fa-info-circle field-info"></i></div>
+              <div class="field-val"><span class="cb-icon"></span></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Photo Uploaded</div>
+              <div class="field-val"><span class="cb-icon"></span></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">Order No</div>
+              <div class="field-val">${escHtml(a.assetNo) || '20049378'}</div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Asset Owner (OVN/OML)</div>
+              <div class="field-val"></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">Clinical Use / Non Clinical Use Only</div>
+              <div class="field-val"></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Total Repair Amount (Parts FOB w/o VAT)</div>
+              <div class="field-val">THB 0.00</div>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">Purchase Order</div>
+              <div class="field-val"></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">ID 18 digit</div>
+              <div class="field-val" style="font-family:monospace;font-size:11px;">02IZr00000H66T6AAI</div>
+            </div>
+            <div class="field-cell"></div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Hospital Province</div>
+              <div class="field-val">PHITSANULOK</div>
+            </div>
+            <div class="field-cell"></div>
+          </div>
+        `)}
+
+        <!-- TJF ANNUAL INSPECTION -->
+        ${sectionBlock('tjf-'+a.id, 'TJF Annual Inspection', `
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label"># of Annual Inspection</div>
+              <div class="field-val">0</div>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">Annual Inspection Status</div>
+              <div class="field-val">4.Not Target</div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Latest Annual Inspect Date</div>
+              <div class="field-val"></div>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">Annual Inspection Plan Date</div>
+              <div class="field-val"></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Latest Annual Inspection Return Date</div>
+              <div class="field-val"></div>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">Annual Inspection Comment</div>
+              <div class="field-val"></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Next Annual Inspection Deadline</div>
+              <div class="field-val"></div>
+            </div>
+            <div class="field-cell"></div>
+          </div>
+        `)}
+
+        <!-- PRODUCT INFORMATION -->
+        ${sectionBlock('prod-'+a.id, 'Product Information', `
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Product</div>
+              <div class="field-val"><a href="#">${escHtml(a.product)}</a></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">Product Category – Layer 1</div>
+              <div class="field-val"></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Serial Number</div>
+              <div class="field-val">${escHtml(a.serialNo)}</div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">Product Category – Layer 2</div>
+              <div class="field-val"></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Asset No (SAP)</div>
+              <div class="field-val"></div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">Asset Owner</div>
+              <div class="field-val">HP Asset</div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Product Name</div>
+              <div class="field-val">${escHtml(a.product)}</div>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">Asset Source</div>
+              <div class="field-val">Manual Input</div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Demo / Loaner</div>
+              <div class="field-val">${escHtml(a.type) || 'Demo / Loaner'}</div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+            <div class="field-cell"></div>
+          </div>
+        `)}
+
+        <!-- PRODUCT CATEGORY -->
+        ${sectionBlock('cat-'+a.id, 'Product Category', `
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Business Unit</div>
+              <div class="field-val"></div>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">BSS Category1</div>
+              <div class="field-val"></div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">OTH Tier1</div>
+              <div class="field-val">SE</div>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">BSS Category2</div>
+              <div class="field-val"></div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">OTH Tier2</div>
+              <div class="field-val">Camera Head Systems</div>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">BSS Category3</div>
+              <div class="field-val"></div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">OTH Tier3</div>
+              <div class="field-val">Camera Heads and Accessories</div>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">BSS Category4</div>
+              <div class="field-val"></div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">OTH Tier4</div>
+              <div class="field-val">Camera Head VISERA ELITE III</div>
+            </div>
+            <div class="field-cell"></div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">OTH Tier5</div>
+              <div class="field-val">Common</div>
+            </div>
+            <div class="field-cell"></div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Competitor Product</div>
+              <div class="field-val"><span class="cb-icon"></span></div>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">Competitor Name</div>
+              <div class="field-val"></div>
+            </div>
+          </div>
+        `)}
+
+        <!-- COMMISSIONING INFORMATION -->
+        ${sectionBlock('comm-'+a.id, 'Commissioning Information', `
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Invoiced Date</div>
+              <div class="field-val">${escHtml(a.installFull)}</div>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">Warranty Start Day</div>
+              <div class="field-val">${escHtml(a.installFull)}</div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-cell">
+              <div class="field-label">Install Date (Commission Date)</div>
+              <div class="field-val">${escHtml(a.installFull)}</div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+            <div class="field-cell">
+              <div class="field-label">Warranty Period End Date</div>
+              <div class="field-val">2025/08/28</div>
+              <span class="field-edit"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+          </div>
+        `)}
+
+        <div style="height:40px;"></div>
+      </div><!-- /left-details -->
+
+      <!-- RELATED TAB -->
+      <div id="left-related-${a.id}" style="display:none;">
+        <div style="padding:20px;text-align:center;color:#706e6b;font-size:13px;">
+          <i class="fas fa-link" style="font-size:24px;margin-bottom:10px;display:block;color:#c0cfe0;"></i>
+          Related records will appear here.
+        </div>
+      </div>
+    </div><!-- /detail-left -->
+
+    <!-- RIGHT PANE -->
+    <div class="detail-right">
+      <div class="right-panel">
+        <div class="right-sub-tabs">
+          <div class="right-sub-tab active">Activity</div>
+          <div class="right-sub-tab">Chatter</div>
+        </div>
+        <div class="activity-top-links">
+          <span>Filters: <a>All time</a> • <a>All activities</a> • <a>All types</a></span>
+          <button class="activity-gear"><i class="fas fa-cog"></i></button>
+        </div>
+        <div style="text-align:right;padding:2px 16px 6px 16px;font-size:11px;">
+          <a style="color:#0070d2;cursor:pointer;margin-right:8px;">Refresh</a>
+          <a style="color:#0070d2;cursor:pointer;margin-right:8px;">Expand All</a>
+          <a style="color:#0070d2;cursor:pointer;">View All</a>
+        </div>
+        <div class="activity-section">
+          <div class="activity-section-hdr" onclick="this.nextElementSibling.classList.toggle('collapsed')">
+            <span><i class="fas fa-chevron-down" style="font-size:10px;margin-right:6px;color:#888;"></i> Upcoming &amp; Overdue</span>
+          </div>
+          <div class="activity-empty">No activities to show.</div>
+        </div>
+        <div class="activity-section" style="margin-top:8px;">
+          <div class="activity-section-hdr">
+            <span>Past Activity</span>
+          </div>
+          <div class="activity-empty">
+            Get started by sending an email, scheduling a task, and more.<br><br>
+            <span style="font-size:11px;color:#aaa;">No past activity. Past meetings and tasks marked as done show up here.</span>
+          </div>
+        </div>
+      </div>
+    </div><!-- /detail-right -->
+
+  </div><!-- /detail-body -->
+  `;
+}
+
+/* helpers */
+function quickLink(color, icon, label, count) {
+  return `<div class="quick-link">
+    <div class="ql-icon" style="background:${color};"><i class="${icon}" style="font-size:8px;"></i></div>
+    <span class="ql-label">${label}</span>
+    ${count !== '' ? `<span class="ql-count">(${count})</span>` : ''}
+  </div>`;
+}
+
+function sectionBlock(id, title, bodyHtml) {
+  return `
+  <div class="section-hdr" onclick="toggleSection('${id}')">
+    <i class="fas fa-chevron-down section-chevron" id="chev-${id}"></i>
+    <span class="section-title">${title}</span>
+  </div>
+  <div class="section-body" id="sec-${id}">
+    <div class="detail-fields">${bodyHtml}</div>
+  </div>`;
+}
+
+function toggleSection(id) {
+  const body = document.getElementById('sec-'+id);
+  const chev = document.getElementById('chev-'+id);
+  body.classList.toggle('collapsed');
+  chev.classList.toggle('collapsed');
+}
+
+function switchSubTab(clickedTab, showId, hideId) {
+  clickedTab.parentElement.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
+  clickedTab.classList.add('active');
+  const show = document.getElementById(showId);
+  const hide = document.getElementById(hideId);
+  if (show) show.style.display = 'block';
+  if (hide) hide.style.display = 'none';
+}
+
+/* ──────────────────────────────────────────────────────────────
+   INIT
+────────────────────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', function() {
+  renderTable();
+  openDashboardTab('Assets'); // default tab on load
+
+  // Auth dropdown
+  document.getElementById('authBtn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    var dd = document.getElementById('authDropdown');
+    var open = dd.classList.toggle('open');
+    this.setAttribute('aria-expanded', String(open));
+  });
+  document.addEventListener('click', function() {
+    document.getElementById('authDropdown').classList.remove('open');
+    document.getElementById('authBtn').setAttribute('aria-expanded','false');
+  });
+});
+</script>
+</body>
+</html>
