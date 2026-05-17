@@ -1,3 +1,24 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// FILE: router/index.tsx
+// Defines the complete URL structure of the application and which component
+// renders at each URL.
+//
+// Key patterns used:
+//
+//   lazy()    — code-splitting. Each page is a separate JS chunk. The browser
+//               only downloads a page's code when the user navigates to it,
+//               making the initial page load much faster.
+//
+//   Suspense  — while the lazy chunk is downloading, <S> shows nothing (null).
+//               You could add a skeleton/spinner here.
+//
+//   ProtectedRoute — wraps all authenticated routes. If the user isn't logged
+//                    in, they get redirected to /login.
+//
+//   RoleRedirect — the /dashboard URL redirects to the correct role-specific
+//                  dashboard (e.g. Sales Reps go to /assets, not /dashboard/eqc).
+// ─────────────────────────────────────────────────────────────────────────────
+
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import AuthenticatedLayout from '@/layouts/AuthenticatedLayout';

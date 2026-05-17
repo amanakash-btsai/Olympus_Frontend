@@ -389,3 +389,131 @@ table.sf-asset-tbl thead tr:nth-child(2) th { top: 26px; z-index: 2; }
 .cal-done   { background: #475569 !important; color: #fff; }
 .cal-ext    { background: #fecaca !important; }
 .cal-other  { background: #bfdbfe !important; }
+
+/* ── DATE INPUTS ── */
+.sf-date-input {
+  cursor: pointer;
+  min-width: 140px;
+}
+.sf-date-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.55;
+  filter: invert(30%) sepia(60%) saturate(600%) hue-rotate(200deg);
+}
+.sf-date-input::-webkit-calendar-picker-indicator:hover { opacity: 1; }
+
+/* ── SELECTED ASSETS ── */
+.sf-selected-section {
+  margin-top: 14px;
+  padding: 12px 16px;
+  background: #eff6ff;
+  border: 1.5px solid #bfdbfe;
+  border-radius: var(--r);
+}
+.sf-selected-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--c-primary);
+  margin-bottom: 10px;
+}
+.sf-selected-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.sf-asset-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #fff;
+  border: 1.5px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+.sf-chip-name {
+  font-weight: 700;
+  color: var(--c-primary-dark);
+}
+.sf-chip-sep {
+  color: var(--c-text-3);
+  font-size: 10px;
+}
+.sf-chip-sn {
+  color: var(--c-text-3);
+  font-size: 11px;
+}
+.sf-chip-remove {
+  border: none;
+  background: none;
+  padding: 2px;
+  cursor: pointer;
+  color: var(--c-text-3);
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  transition: color .15s, background .15s;
+}
+.sf-chip-remove:hover {
+  color: var(--c-danger);
+  background: #fee2e2;
+}
+
+/* ── ADD BUTTON (in asset table) ── */
+.sf-add-btn {
+  border: 1.5px solid #10b981;
+  background: #ecfdf5;
+  color: #059669;
+  padding: 0 10px;
+  height: 28px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: var(--r-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all .15s;
+  white-space: nowrap;
+  font-family: 'Inter', inherit;
+}
+.sf-add-btn:hover:not(:disabled) {
+  background: #059669;
+  color: #fff;
+  border-color: #059669;
+  box-shadow: 0 2px 4px rgba(5,150,105,.25);
+}
+.sf-add-btn-added,
+.sf-add-btn:disabled {
+  border-color: #3b82f6;
+  background: #eff6ff;
+  color: #2563eb;
+  cursor: default;
+  opacity: 1;
+}
+
+/* ── PLACE REQUEST BUTTON ── */
+.sf-btn-place {
+  background: linear-gradient(135deg, #059669, #10b981);
+  border-color: transparent;
+  color: #fff;
+  padding: 0 28px;
+  height: 36px;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: 0 2px 6px rgba(5,150,105,.3);
+}
+.sf-btn-place:hover:not(:disabled) {
+  background: linear-gradient(135deg, #047857, #059669);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(5,150,105,.35);
+}
+.sf-btn-place:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  box-shadow: none;
+}

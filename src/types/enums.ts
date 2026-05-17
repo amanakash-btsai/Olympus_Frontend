@@ -1,3 +1,15 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// FILE: types/enums.ts (frontend)
+// All domain type definitions used across the frontend — mirrors the backend
+// enums. Using TypeScript union types catches typos at compile time.
+//
+// These are used in:
+//   - API function parameter types (e.g. filter by AssetStatus)
+//   - useHasRole() checks (e.g. useHasRole('EQC_Manager'))
+//   - Badge colors (statusHelpers.ts maps these to color classes)
+//   - Form dropdowns (these are the allowed values)
+// ─────────────────────────────────────────────────────────────────────────────
+
 // User roles — maps to users.role in DB
 export type UserRole =
   | 'Sales_Rep'

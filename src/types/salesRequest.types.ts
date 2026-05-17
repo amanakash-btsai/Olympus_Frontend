@@ -43,17 +43,48 @@ export interface SalesRequest {
   updated_at: string;
 }
 
+/** Deployment info embedded in a SalesRequestDetail response */
+export interface SalesRequestDeployment {
+  deployment_id: string;
+  asset_id: string;
+  status: string;
+  start_date: string;
+  expected_return_date: string;
+  asset?: {
+    asset_id: string;
+    asset_name: string;
+    serial_number: string;
+    model_code: string;
+    model_name?: string;
+  };
+}
+
+/** SalesRequest enriched with joined relations — returned by the backend include */
+export interface SalesRequestDetail extends SalesRequest {
+  account?: { account_id: string; account_name: string };
+  sales_person?: { user_id: string; name: string; email: string };
+  approved_by?: { user_id: string; name: string } | null;
+  deployments?: SalesRequestDeployment[];
+}
+
 export interface CreateSalesRequestPayload {
   record_type: SalesRequestRecordType;
   purpose1: SalesRequestPurpose1;
   purpose2: SalesRequestPurpose2;
   account_id: string;
   sales_person_id: string;
+  /** ISO date string: date the goods are requested to be received */
+  request_date: string;
   start_use_date: string;
   estimate_return_date: string;
   department_category?: string;
   department_name?: string;
   customer_address?: string;
+  customer_pic_id?: string;
   event_name?: string;
+  prospect_name?: string;
+  pcl_number?: string;
   parent_request_id?: string;
+  /** Asset UUIDs to attach to this request via DeviceDeployment */
+  asset_ids?: string[];
 }

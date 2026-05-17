@@ -7,7 +7,9 @@ export type DashboardTabType =
   | 'loaner-tracker'
   | 'asset-detail'
   | 'create-asset'
-  | 'dashboard';
+  | 'dashboard'
+  | 'manager-dashboard'
+  | 'eqc-dashboard';
 
 export interface DashboardTab {
   id: string;

@@ -43,5 +43,24 @@ export interface Asset {
   updated_at: string;
 }
 
+/** Active deployment window attached to an asset when include_deployments=true */
+export interface AssetDeploymentWindow {
+  deployment_id: string;
+  start_date: string;
+  expected_return_date: string;
+  status: string;
+  request_id: string;
+  /** Parent request info for calendar colour logic */
+  sales_request?: {
+    sales_person_id: string;
+    status: string;
+  };
+}
+
+/** Asset enriched with its active deployment windows (requires include_deployments=true) */
+export interface AssetWithDeployments extends Asset {
+  deployments?: AssetDeploymentWindow[];
+}
+
 export interface CreateAssetPayload extends Omit<Asset, 'asset_id' | 'created_at' | 'updated_at'> {}
 export interface UpdateAssetPayload extends Partial<CreateAssetPayload> {}

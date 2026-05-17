@@ -4,6 +4,8 @@ import type { ApiResponse } from '@/types/api.types';
 import { apiClient } from './axiosInstance';
 
 interface AccountFilters {
+  /** Partial name search */
+  search?: string;
   area?: AreaCode;
   segmentation?: string;
   group_wave?: string;

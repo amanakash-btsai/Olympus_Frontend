@@ -1,9 +1,11 @@
 import { Suspense, lazy } from 'react';
 import { useDashboardTabs, type DashboardTab } from './DashboardTabContext';
 
-const AssetListPage   = lazy(() => import('../../pages/Assets/AssetListPage'));
-const AssetDetailPage = lazy(() => import('../../pages/Assets/AssetDetailPage'));
-const SalesDashboard  = lazy(() => import('../../pages/Dashboard/SalesDashboard'));
+const AssetListPage      = lazy(() => import('../../pages/Assets/AssetListPage'));
+const AssetDetailPage    = lazy(() => import('../../pages/Assets/AssetDetailPage'));
+const SalesDashboard     = lazy(() => import('../../pages/Dashboard/SalesDashboard'));
+const ManagerDashboard   = lazy(() => import('../../pages/Dashboard/ManagerDashboard'));
+const EQCDashboard       = lazy(() => import('../../pages/Dashboard/EQCDashboard'));
 
 function ComingSoon({ title }: { title: string }) {
   return (
@@ -32,8 +34,12 @@ function TabPanel({ tab }: { tab: DashboardTab }) {
       return <ComingSoon title="Demo Tracker Dashboard" />;
     case 'loaner-tracker':
       return <ComingSoon title="Loaner Tracker Dashboard" />;
+    case 'manager-dashboard':
+      return <div className="p-6"><ManagerDashboard /></div>;
+    case 'eqc-dashboard':
+      return <div className="p-6"><EQCDashboard /></div>;
     case 'dashboard':
-      return null; // Dashboard navigates to /dashboard route rather than rendering in a tab
+      return null; // Home navigates to /dashboard route rather than rendering in a tab
     default:
       return null;
   }

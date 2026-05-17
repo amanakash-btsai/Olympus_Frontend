@@ -58,12 +58,14 @@ interface ModuleItem {
 
 // CHANGED: added dashboard as first module; original list started with assets
 const MODULES: ModuleItem[] = [
-  { id: 'dashboard',      type: 'dashboard',      title: 'Dashboard',      icon: 'fas fa-th-large',          closable: false },
+  { id: 'dashboard',          type: 'dashboard',          title: 'Home',             icon: 'fas fa-th-large',          closable: false },
+  { id: 'manager-dashboard',  type: 'manager-dashboard',  title: 'Sales Manager',    icon: 'fas fa-user-tie',          closable: true  },
+  { id: 'eqc-dashboard',      type: 'eqc-dashboard',      title: 'EQC Operations',   icon: 'fas fa-boxes',             closable: true  },
   // CHANGED: closable was false — set to true to show × on the Assets sub-tab
-  { id: 'assets',         type: 'assets',         title: 'Assets',         icon: 'fas fa-box-open',          closable: true  },
-  { id: 'sales-field',    type: 'sales-field',     title: 'Sales Field',    icon: 'fas fa-clipboard-list',    closable: true  },
-  { id: 'demo-tracker',   type: 'demo-tracker',    title: 'Demo Tracker',   icon: 'fas fa-chart-line',        closable: true  },
-  { id: 'loaner-tracker', type: 'loaner-tracker',  title: 'Loaner Tracker', icon: 'fas fa-exchange-alt',      closable: true  },
+  { id: 'assets',             type: 'assets',             title: 'Assets',           icon: 'fas fa-box-open',          closable: true  },
+  { id: 'sales-field',        type: 'sales-field',        title: 'Sales Field',      icon: 'fas fa-clipboard-list',    closable: true  },
+  { id: 'demo-tracker',       type: 'demo-tracker',       title: 'Demo Tracker',     icon: 'fas fa-chart-line',        closable: true  },
+  { id: 'loaner-tracker',     type: 'loaner-tracker',     title: 'Loaner Tracker',   icon: 'fas fa-exchange-alt',      closable: true  },
 ];
 
 function moduleForActiveTab(tabId: string): string {
@@ -89,6 +91,14 @@ export default function DashboardNavbar() {
   const brandLabel = brandLabelForPath(pathname);
   const isAssetsSection = pathname.startsWith('/assets');
   const isDashboardSection = pathname.startsWith('/dashboard');
+
+  // Derives the currently active module id for the dropdown's controlled value.
+  // CHANGED (dropdown): added for select value binding — remove if reverting to button tabs.
+  const activeModuleId = isDashboardSection
+    ? 'dashboard'
+    : isAssetsSection
+      ? moduleForActiveTab(activeTabId)
+      : '';
 
   // CHANGED: dashboard button navigates; others open a tab (navigating to /assets first if needed)
   const handleModuleClick = (mod: ModuleItem) => {
@@ -118,15 +128,13 @@ export default function DashboardNavbar() {
 
   return (
     <div className="main-nav" id="mainNav">
-      {/* CHANGED: module-nav-tabs moved before nav-brand so buttons appear on the left.
-          ORIGINAL order was: nav-brand first, then module-nav-tabs. */}
-      {/* CHANGED: module-nav-tabs now always visible (was gated on isAssetsSection).
-          ORIGINAL conditional was:
-            {isAssetsSection ? <div className="module-nav-tabs">…</div> : <div className="nav-tabs">…</div>}
-      */}
+      {/* CHANGED (dropdown): module-nav-tabs button row replaced with a <select> dropdown.
+          To revert: delete the oly-dropdown block below and uncomment the module-nav-tabs block.
+          Original button row kept verbatim below for easy restoration. */}
+
+      {/* ORIGINAL module-nav-tabs button row — uncomment to revert
       <div className="module-nav-tabs">
         {MODULES.map((mod) => {
-          // Dashboard button is active when on /dashboard; others use tab-context
           const isActive =
             mod.id === 'dashboard'
               ? isDashboardSection
@@ -152,6 +160,25 @@ export default function DashboardNavbar() {
             </div>
           );
         })}
+      </div>
+      */}
+
+      {/* CHANGED (dropdown): select navigates/opens the same way handleModuleClick always did */}
+      <div className="oly-dropdown" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <span style={{ color: '#fff', fontSize: '11px', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+          Dashboard
+        </span>
+        <select
+          value={activeModuleId}
+          onChange={(e) => {
+            const mod = MODULES.find((m) => m.id === e.target.value);
+            if (mod) handleModuleClick(mod);
+          }}
+        >
+          {MODULES.map((mod) => (
+            <option key={mod.id} value={mod.id}>{mod.title}</option>
+          ))}
+        </select>
       </div>
 
       {/* ORIGINAL fallback nav-tabs for non-assets sections — kept for revert reference */}

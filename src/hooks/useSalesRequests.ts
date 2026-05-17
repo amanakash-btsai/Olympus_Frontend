@@ -1,3 +1,19 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// FILE: hooks/useSalesRequests.ts
+// React Query hooks for all sales request operations.
+//
+// Each mutation's onSuccess invalidates related query caches — this is what
+// makes the UI "reactive": after an approval, the list re-fetches automatically
+// and the table updates without the user having to refresh the page.
+//
+// Cache invalidation strategy:
+//   - Mutations that change a request's status also invalidate dashboard caches
+//     because the dashboard KPI numbers (e.g. "5 pending approvals") depend on
+//     request statuses.
+//   - useMarkReturned also invalidates ['assets'] because returning a device
+//     changes the asset's status back to Available.
+// ─────────────────────────────────────────────────────────────────────────────
+
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import type { CreateSalesRequestPayload } from '@/types/salesRequest.types';
 import type { SalesRequestStatus, SalesRequestRecordType, SalesRequestPurpose1, SalesRequestPurpose2 } from '@/types/enums';
